@@ -11,8 +11,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Spacestagram</h1>
+        <h1 className="text-4xl text-orange-500">Spacestagram</h1>
       </main>
     </div>
-  )
+  );
 }
