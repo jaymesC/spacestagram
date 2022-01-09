@@ -3,10 +3,17 @@ import Image from "next/image";
 import Axios from "axios";
 import Feeds from "../components/Feeds";
 import Header from "../components/Header";
-import axios from "axios";
 import React, { useState } from "react";
 
 export default function Home({ data }) {
+  const [isLoading, setIsLoading] = useState(true)
+    if (isLoading)
+      return (
+        <div className="">
+          {/* <Spinner className="spinner-icon" /> */}
+          <h1>loading...</h1>
+        </div>
+      );
   return (
     <div>
       <Head>
@@ -28,11 +35,13 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
+  setIsLoading(true);
   const { data } = await Axios.get(
     `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`
   );
   console.log(data);
-
+  
+  setIsLoading(false)
   return {
     props: {
       data,
