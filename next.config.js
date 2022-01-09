@@ -1,9 +1,7 @@
+require("dotenv").config();
 module.exports = {
   images: {
-    domains: [
-      "https://api.nasa.gov",
-      "firebasestorage.googleapis.com",
-    ],
+    domains: ["apod.nasa.gov", "firebasestorage.googleapis.com"],
   },
   reactStrictMode: true,
 };

@@ -1,7 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
+import Image from "next/image";
+import Axios from "axios";
+import Feeds from "../components/Feeds";
+import Header from "../components/Header";
+import axios from "axios";
+import React, { useState } from "react";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div>
       <Head>
@@ -10,9 +15,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+        <Header />
       <main>
-        <h1 className="text-4xl text-orange-500">Spacestagram</h1>
+        {data.map((d) => (
+          <div key={d.date} className="ml-5">
+            <Feeds url={d.url} explanation={d.explanation} />
+          </div>
+        ))}
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const { data } = await Axios.get(
+    `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`
+  );
+  console.log(data);
+
+  return {
+    props: {
+      data,
+    },
+  };
 }
