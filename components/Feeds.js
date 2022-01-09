@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Image from "next/image";
+import { HeartIcon } from "@heroicons/react/solid";
+
 
 
 
@@ -15,7 +17,11 @@ function Feeds({ url, explanation }) {
         className="rounded text-red-600 border-2"
         onClick={() => setLike(!like)}
       >
-        {like ? "like" : "unlike"}
+        <HeartIcon
+          className={`h-10 w-10 border-2 ${
+            like ? "text-gray-300" : "text-current"
+          }`}
+        />
       </button>
     </div>
   );
