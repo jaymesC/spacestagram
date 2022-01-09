@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import Image from "next/image";
-import Axios from "axios";
-import axios from "axios";
+
 
 
 function Feeds({ url, explanation }) {
