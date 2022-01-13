@@ -6,7 +6,7 @@ import { CalendarIcon } from "@heroicons/react/outline";
 function Feeds({ image, date, title, description }) {
   // UseState to change Like and Effect animation on button when clicked
 
-  const [like, setLike] = useState(true);
+  const [like, setLike] = useState(false);
   const [effect, setEffect] = useState(false);
 
   // function to handle button Click
@@ -16,7 +16,7 @@ function Feeds({ image, date, title, description }) {
   };
 
   return (
-    <div className="bg-white pb-4 outline outline-1 outline-gray-300 w-128 rounded-sm">
+    <div className="bg-white pb-4 outline outline-1 outline-gray-300 md:w-128 rounded-sm ">
       <h2 className="bg-white font-semibold pt-2 ml-5 font-sans">{title}</h2>
       <h5 className="text-gray-500 ml-5 mb-4 mt-1 text-xs">{`Brought to you by NASA's Astronomy Photo of the Day (APOD) API`}</h5>
       <div className="flex flex-col ">
@@ -37,8 +37,8 @@ function Feeds({ image, date, title, description }) {
           <HeartIcon
             className={` ${effect && "animate-wiggle"} h-8 w-8 ${
               like
-                ? " text-white stroke-black hover:stroke-gray-500"
-                : "fill-red-600 "
+                ? "fill-red-600 "
+                : " text-white stroke-black hover:stroke-gray-500"
             }`}
           />
         </button>
@@ -47,7 +47,9 @@ function Feeds({ image, date, title, description }) {
         <CalendarIcon className="h-7 ml-5 stroke-gray-700" />
         <h4 className="py-1">{date}</h4>
       </div>
-      <p className="italic font-sans line-clamp-6 px-5">{description}</p>
+      <p className="italic font-sans line-clamp-6 px-5 text-base">
+        {description}
+      </p>
     </div>
   );
 }
