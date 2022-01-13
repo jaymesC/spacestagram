@@ -27,7 +27,7 @@ export default function Home() {
 
       {data && (
         <Layout>
-          <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
+          <main className=" grid place-items-center h-screen pt-20 space-y-6 container mx-10">
             {data.map((d, i) => (
               <div key={i}>
                 <Feeds
