@@ -1,14 +1,15 @@
 import Head from "next/head";
 import { useAxios } from "use-axios-client";
 import Feeds from "../components/Feeds";
-import Header from "../components/Header";
 import Spinner from "../components/Spinner";
-
+import Layout from "../components/Layout";
 
 export default function Home() {
   const { data, error, loading } = useAxios({
     url: `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`,
   });
+
+  console.log(data);
 
   return (
     <>
@@ -18,21 +19,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {loading && (
-        <Spinner />
-      )}
+      {/* loading state while waiting for NASA’s API to return data */}
+      {loading && <Spinner />}
+
+      {/* state to catch error if any */}
+      {error && <h3>{error.message}</h3>}
 
       {data && (
-        <>
-          <Header />
-          <main>
-            {data.map((d) => (
-              <div key={d.date} className="ml-5">
-                <Feeds url={d.url} explanation={d.explanation} />
+        <Layout>
+          <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
+            {data.map((d, i) => (
+              <div key={i}>
+                <Feeds
+                  image={d.url}
+                  title={d.title}
+                  date={d.date}
+                  alt={d.title}
+                  description={d.explanation}
+                />
               </div>
             ))}
           </main>
-        </>
+        </Layout>
       )}
     </>
   );
