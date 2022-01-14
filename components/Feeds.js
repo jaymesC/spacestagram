@@ -44,7 +44,7 @@ function Feeds({ image, date, title, description }) {
         </button>
       </div>
       <div className="flex space-x-4 ">
-        <CalendarIcon className="h-7 ml-5 stroke-gray-700" />
+        <CalendarIcon className="h-7 ml-6 stroke-gray-700" />
         <h4 className="py-1">{date}</h4>
       </div>
       <p className="italic font-sans  px-5 text-sm">
