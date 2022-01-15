@@ -29,7 +29,7 @@ function Feeds({ image, date, title, description }) {
           objectFit="fill"
         />
       </div>
-      <div className="flex justify-between ">
+      <div className="flex justify-between content-center">
         <button
           className="ml-5 my-2 w-2"
           type="button"
