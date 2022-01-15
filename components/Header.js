@@ -20,7 +20,7 @@ function Header() {
   ];
 
   return (
-    <nav className="mb-4 fixed w-full top-0 z-50 bg-white flex items-center justify-around  p-2 lg:px-5 shadow-md">
+    <nav className="mb-4 fixed w-full top-0 z-50 bg-white flex items-center justify-around  p-1 lg:px-5 shadow-md">
       <Image
         src="/Spacestagram.PNG"
         alt="logo"
@@ -29,8 +29,8 @@ function Header() {
         className="cursor-pointer"
       />
       <div className="flex justify-between content-center">
-        <div className="flex items-center rounded bg-gray-200 p-2 mr-20">
-          <SearchIcon className=" h-4 text-gray-500 " />
+        <div className="flex items-center rounded bg-gray-200 m-2 mr-20 h-9 ">
+          <SearchIcon className=" md:h-4 md:text-gray-500 " />
           <input
             type="text"
             placeholder="Search"
@@ -38,7 +38,7 @@ function Header() {
           />
         </div>
         <div className="flex  justify-around">
-          <div className="flex space-x-3 md:space-x-6 content-center justify-center mt-1">
+          <div className="flex space-x-3 md:space-x-6 content-center justify-center mt-3">
             {headerIcon.map((icon) => (
               <img
                 key={icon.id}
