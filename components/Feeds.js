@@ -18,7 +18,7 @@ function Feeds({ image, date, title, description }) {
   return (
     <div className="bg-white pb-4 outline outline-1 outline-gray-300 md:w-128 rounded-sm ">
       <h2 className="bg-white font-semibold pt-2 ml-5 font-sans">{title}</h2>
-      <h5 className="text-gray-500 ml-5 mb-4 mt-1 text-xs">{`Brought to you by NASA's Astronomy Photo of the Day (APOD) API`}</h5>
+      <h5 className="text-gray-400 ml-5 mb-4 mt-1 text-xs">{`Brought to you by NASA's Astronomy Photo of the Day (APOD) API`}</h5>
       <div className="flex flex-col ">
         <Image
           src={image}
@@ -28,6 +28,8 @@ function Feeds({ image, date, title, description }) {
           className="rounded"
           objectFit="fill"
         />
+      </div>
+      <div className="flex justify-between ">
         <button
           className="ml-5 my-2 w-2"
           type="button"
@@ -42,14 +44,13 @@ function Feeds({ image, date, title, description }) {
             }`}
           />
         </button>
+        <div className="flex my-2 mr-7">
+          <CalendarIcon className="h-7 ml-6 mr-2 stroke-gray-900" />
+          <h4 className="py-1">{date}</h4>
+        </div>
       </div>
-      <div className="flex space-x-4 ">
-        <CalendarIcon className="h-7 ml-6 stroke-gray-700" />
-        <h4 className="py-1">{date}</h4>
-      </div>
-      <p className="italic font-sans  px-5 text-sm">
-        {description}
-      </p>
+
+      <p className="italic font-sans  px-5">{description}</p>
     </div>
   );
 }
