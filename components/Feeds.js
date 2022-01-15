@@ -18,7 +18,7 @@ function Feeds({ image, date, title, description }) {
   return (
     <div className="bg-white pb-4 outline outline-1 outline-gray-300 md:w-128 rounded-sm ">
       <h2 className="bg-white font-semibold pt-2 ml-5 font-sans">{title}</h2>
-      <h5 className="text-gray-400 ml-5 mb-4 mt-1 text-xs">{`Brought to you by NASA's Astronomy Photo of the Day (APOD) API`}</h5>
+      <h5 className="text-gray-500 ml-5 mb-4 mt-1 text-xs">{`Brought to you by NASA's Astronomy Photo of the Day (APOD) API`}</h5>
       <div className="flex flex-col ">
         <Image
           src={image}
