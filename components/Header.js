@@ -30,7 +30,7 @@ function Header() {
       />
       <div className="flex justify-between content-center">
         <div className="flex items-center rounded bg-gray-200 m-2 mr-20 h-9 ">
-          <SearchIcon className=" md:h-4 md:text-gray-500 " />
+          <SearchIcon className=" md:h-4 pl-1 md:text-gray-500 " />
           <input
             type="text"
             placeholder="Search"
