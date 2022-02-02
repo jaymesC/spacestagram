@@ -1,21 +1,16 @@
 import Head from "next/head";
+import { useAxios } from "use-axios-client";
 import Feeds from "../components/Feeds";
+import Spinner from "../components/Spinner";
 import Layout from "../components/Layout";
 
-export async function getServerSideProps() {
-  const res = await fetch(
-    `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`
-  );
-  const data = await res.json();
+export default function Home() {
+  const { data, error, loading } = useAxios({
+    url: `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`,
+  });
 
-  return {
-    props: {
-      nasa: data,
-    },
-  };
-}
+  console.log(data);
 
-export default function Home({ nasa }) {
   return (
     <>
       <Head>
@@ -24,21 +19,29 @@ export default function Home({ nasa }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
-        <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
-          {nasa.map((d, i) => (
-            <div key={i}>
-              <Feeds
-                image={d.url}
-                title={d.title}
-                date={d.date}
-                alt={d.title}
-                description={d.explanation}
-              />
-            </div>
-          ))}
-        </main>
-      </Layout>
+      {/* loading state while waiting for NASA’s API to return data */}
+      {loading && <Spinner />}
+
+      {/* state to catch error if any */}
+      {error && <h3>{error.message}</h3>}
+
+      {data && (
+        <Layout>
+          <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
+            {data.map((d, i) => (
+              <div key={i}>
+                <Feeds
+                  image={d.url}
+                  title={d.title}
+                  date={d.date}
+                  alt={d.title}
+                  description={d.explanation}
+                />
+              </div>
+            ))}
+          </main>
+        </Layout>
+      )}
     </>
   );
 }
