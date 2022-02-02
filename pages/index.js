@@ -7,16 +7,15 @@ export async function getServerSideProps() {
     `https://api.nasa.gov/planetary/apod?api_key=${process.env.NEXT_PUBLIC_API_KEY}&count=5`
   );
   const data = await res.json();
+
   return {
     props: {
-      nasa: data
-    }
-  }
+      nasa: data,
+    },
+  };
 }
 
-
-export default function Home({nasa}) {
-
+export default function Home({ nasa }) {
   return (
     <>
       <Head>
@@ -25,21 +24,21 @@ export default function Home({nasa}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <Layout>
-          <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
-            {nasa?.map((d, i) => (
-              <div key={i}>
-                <Feeds
-                  image={d.url}
-                  title={d.title}
-                  date={d.date}
-                  alt={d.title}
-                  description={d.explanation}
-                />
-              </div>
-            ))}
-          </main>
-        </Layout>
+      <Layout>
+        <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
+          {nasa?.map((d, i) => (
+            <div key={i}>
+              <Feeds
+                image={d.url}
+                title={d.title}
+                date={d.date}
+                alt={d.title}
+                description={d.explanation}
+              />
+            </div>
+          ))}
+        </main>
+      </Layout>
     </>
   );
 }
