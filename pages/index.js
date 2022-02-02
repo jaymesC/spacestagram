@@ -26,7 +26,7 @@ export default function Home({ nasa }) {
 
       <Layout>
         <main className=" grid place-items-center h-screen pt-20 space-y-6 ">
-          {nasa?.map((d, i) => (
+          {nasa.map((d, i) => (
             <div key={i}>
               <Feeds
                 image={d.url}
